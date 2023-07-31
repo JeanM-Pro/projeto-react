@@ -1,0 +1,28 @@
+{
+  "contatos": [
+    {
+      "nome": "jean centeno",
+      "tlf": "22997145377",
+      "email": "jeancenteno54@gmail.com",
+      "endereco": "Las casitas de monte verde, calle andres bello",
+      "gender": "male",
+      "id": 1
+    },
+    {
+      "nome": "laura perez",
+      "tlf": "8652149524",
+      "email": "gualuca@gmail.com",
+      "endereco": "las pata de mingo",
+      "gender": "female",
+      "id": 3
+    },
+    {
+      "nome": "Manuel perez",
+      "tlf": "68999064852",
+      "email": "palote@gmail.com",
+      "endereco": "rua sao jose n34 apto 302 cardoso moreira RJ",
+      "gender": "male",
+      "id": 5
+    }
+  ]
+}
