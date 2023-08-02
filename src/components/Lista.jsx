@@ -11,6 +11,7 @@ export const Lista = ({
   selectedContact,
   setContatos,
   contatos,
+  widthScreen,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,7 +43,9 @@ export const Lista = ({
   };
 
   return (
-    <div className="col-span-4 flex flex-col text-white h-screen bg-[#111B21] border-r-[1px] border-[#3e464b]">
+    <div
+      className={`col-span-4 max-[540px]:col-span-12 flex flex-col text-white h-screen bg-[#111B21] border-r-[1px] border-[#3e464b]`}
+    >
       <div className="w-full pl-4 items-center justify-between flex py-2 ">
         <div className="w-[85%] px-2 flex items-center justify-between bg-[#202C33] h-10 rounded-lg">
           <AiOutlineSearch className="text-2xl text-[#AEBAC1]" />

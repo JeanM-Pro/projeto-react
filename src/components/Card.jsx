@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { DeleteContactModal } from "./DeleteContactModal";
 import { EditContactModal } from "./EditContactModal";
 import maleImage from "./images/home.png";
@@ -17,13 +18,13 @@ export const Card = ({
 
   if (!selectedContact) {
     return (
-      <div className="bg-[#202C33] flex flex-col items-center justify-center col-span-8 text-white">
+      <div className="bg-[#202C33] max-[540px]:hidden flex flex-col items-center justify-center col-span-8 text-white">
         <img
           src="https://png.pngtree.com/png-vector/20220621/ourlarge/pngtree-male-user-profile-avatar-boy-png-image_5244563.png"
           alt=""
           className="w-[250px] h-[250px] rounded-[50%] opacity-50 "
         />
-        <p className="mt-4 select-none font-semibold text-xl opacity-50 ">
+        <p className="mt-4 select-none text-center font-semibold text-xl opacity-50 ">
           Selecione um contato para ver suas informações.
         </p>
       </div>
@@ -88,7 +89,11 @@ export const Card = ({
   const [firstTwoDigits, restOfString] = splitString(selectedContact.tlf);
 
   return (
-    <div className="bg-[#202C33] flex items-center justify-center col-span-8 text-white">
+    <div className="bg-[#202C33] max-[540px]:h-full max-[540px]:bg-opacity-90 max-[540px]:w-full max-[540px]:fixed flex items-center justify-center col-span-8 text-white">
+      <AiOutlineCloseCircle
+        onClick={() => setSelectedContact(null)}
+        className="min-[541px]:hidden absolute text-5xl top-4 right-4"
+      />
       <div className="flex flex-col items-center">
         <img
           src={selectedContact.gender === "male" ? maleImage : femaleImage}
@@ -103,7 +108,7 @@ export const Card = ({
         </p>
         <p className="text-lg">{`(${firstTwoDigits}) ${restOfString}`}</p>
         <p className="text-[#86897A]">{selectedContact.email}</p>
-        <p className="text-[#86897A]">
+        <p className="text-[#86897A] text-center">
           {selectedContact.endereco.replace(/\b\w/g, (match) =>
             match.toUpperCase()
           )}

@@ -9,20 +9,20 @@
       "id": 1
     },
     {
-      "nome": "laura perez",
-      "tlf": "8652149524",
-      "email": "gualuca@gmail.com",
-      "endereco": "las pata de mingo",
-      "gender": "female",
-      "id": 3
-    },
-    {
       "nome": "Manuel perez",
       "tlf": "68999064852",
       "email": "palote@gmail.com",
       "endereco": "rua sao jose n34 apto 302 cardoso moreira RJ",
       "gender": "male",
       "id": 5
+    },
+    {
+      "nome": "Maria Bricenio",
+      "tlf": "22 658784514",
+      "email": "ellocotron@gmail.com",
+      "endereco": "calle las roas casa n12, el pueblito edo. Aragua",
+      "gender": "female",
+      "id": 6
     }
   ]
 }

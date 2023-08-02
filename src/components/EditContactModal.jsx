@@ -43,7 +43,7 @@ export const EditContactModal = ({
         isOpen ? "fixed" : "hidden"
       } inset-0 flex items-center justify-center z-20 bg-black bg-opacity-80`}
     >
-      <div className="bg-[#111B21] text-white p-8 rounded-lg">
+      <div className="bg-[#111B21] max-[540px]:w-[90%] text-white max-[540px]:p-4 p-8 rounded-lg">
         <h2 className="text-2xl opacity-70 font-semibold text-center mb-4">
           Editar Contato
         </h2>
@@ -56,7 +56,7 @@ export const EditContactModal = ({
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               required
-              className="ml-2 focus:outline-0 bg-transparent border-b-[1px]"
+              className="ml-2 focus:outline-0 bg-transparent max-[540px]:w-full border-b-[1px]"
               placeholder="Insira o nome"
             />
           </div>
@@ -68,7 +68,7 @@ export const EditContactModal = ({
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
               required
-              className="ml-2 bg-transparent focus:outline-0 border-b-[1px]"
+              className="ml-2 bg-transparent max-[540px]:w-full focus:outline-0 border-b-[1px]"
               placeholder="Insira o telefone"
             />
           </div>
@@ -79,7 +79,7 @@ export const EditContactModal = ({
               id="endereco"
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
-              className="ml-2 bg-transparent focus:outline-0 border-b-[1px]"
+              className="ml-2 bg-transparent max-[540px]:w-full focus:outline-0 border-b-[1px]"
               placeholder="Insira o endereço"
             />
           </div>
@@ -90,7 +90,7 @@ export const EditContactModal = ({
               id="correio"
               value={correio}
               onChange={(e) => setCorreio(e.target.value)}
-              className="ml-2 bg-transparent focus:outline-0 border-b-[1px]"
+              className="ml-2 bg-transparent max-[540px]:w-full focus:outline-0 border-b-[1px]"
               placeholder="Insira o email"
             />
           </div>
