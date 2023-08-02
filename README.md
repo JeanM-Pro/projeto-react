@@ -1,4 +1,6 @@
-Comandos:
+Instalar as dependências do Node.
+npm install
+
 Executar App:
 npm start
 
