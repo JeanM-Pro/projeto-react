@@ -59,7 +59,7 @@ export const Lista = ({
               setSearchTerm(e.target.value);
               setShowClearButton(e.target.value.length > 0);
             }}
-            placeholder="Buscar contacto..."
+            placeholder="Buscar contato..."
           />
           {showClearButton && (
             <AiOutlineCloseCircle
