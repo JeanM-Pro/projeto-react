@@ -15,6 +15,7 @@ export const Card = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [spinnerDelete, setspinnerDelete] = useState(false);
 
   if (!selectedContact) {
     return (
@@ -61,19 +62,23 @@ export const Card = ({
         console.error("Error al actualizar el contacto", error)
       );
   };
-  const handleDeleteContact = () => {
-    fetch(`http://localhost:5000/contatos/${selectedContact.id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
+  const handleDeleteContact = async () => {
+    setspinnerDelete(true);
+    try {
+      await fetch(`http://localhost:5000/contatos/${selectedContact.id}`, {
+        method: "DELETE",
+      }).then(() => {
         const updatedContatos = contatos.filter(
           (contato) => contato.id !== selectedContact.id
         );
         setContatos(updatedContatos);
+        setspinnerDelete(false);
         setSelectedContact(null);
         setIsModalOpen(false);
-      })
-      .catch((error) => console.error("Error al eliminar el contacto", error));
+      });
+    } catch (error) {
+      console.error("Error al eliminar el contacto", error);
+    }
   };
 
   const splitString = (str) => {
@@ -128,6 +133,7 @@ export const Card = ({
         <DeleteContactModal
           setIsModalOpen={setIsModalOpen}
           handleDeleteContact={handleDeleteContact}
+          spinnerDelete={spinnerDelete}
         />
       )}
 

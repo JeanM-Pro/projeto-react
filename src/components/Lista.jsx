@@ -11,7 +11,6 @@ export const Lista = ({
   selectedContact,
   setContatos,
   contatos,
-  widthScreen,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");

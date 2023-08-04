@@ -1,28 +1,3 @@
 {
-  "contatos": [
-    {
-      "nome": "jean centeno",
-      "tlf": "22997145377",
-      "email": "jeancenteno54@gmail.com",
-      "endereco": "Las casitas de monte verde, calle andres bello",
-      "gender": "male",
-      "id": 1
-    },
-    {
-      "nome": "Manuel perez",
-      "tlf": "68999064852",
-      "email": "palote@gmail.com",
-      "endereco": "rua sao jose n34 apto 302 cardoso moreira RJ",
-      "gender": "male",
-      "id": 5
-    },
-    {
-      "nome": "Maria Bricenio",
-      "tlf": "22 658784514",
-      "email": "ellocotron@gmail.com",
-      "endereco": "calle las roas casa n12, el pueblito edo. Aragua",
-      "gender": "female",
-      "id": 6
-    }
-  ]
+  "contatos": []
 }
