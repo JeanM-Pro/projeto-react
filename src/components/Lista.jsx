@@ -5,24 +5,32 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { CardList } from "./CardList";
 import { AddContactModal } from "./AddContactModal";
+import { BiLogOut } from "react-icons/bi";
+import { auth } from "../firebase/firebase";
+import RingLoader from "react-spinners/RingLoader";
 
 export const Lista = ({
   onContactClick,
   selectedContact,
   setContatos,
   contatos,
+  user,
+  setUser,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredContatos, setFilteredContatos] = useState([]);
   const [showClearButton, setShowClearButton] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   useEffect(() => {
-    fetch("https://node-project-production-dadb.up.railway.app/api/contacts")
+    fetch(
+      `https://node-project-production-dadb.up.railway.app/api/contacts?uid=${user.uid}`
+    )
       .then((response) => response.json())
       .then((data) => setContatos(data))
       .catch((error) => console.error("Error al obtener los usuarios", error));
-  }, [setContatos]);
+  }, [setContatos, user.uid]);
 
   useEffect(() => {
     const filtered = contatos.filter((contato) =>
@@ -41,10 +49,36 @@ export const Lista = ({
     setShowClearButton(false);
   };
 
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    setTimeout(async () => {
+      try {
+        await auth.signOut();
+        setIsLoggingOut(false);
+      } catch (error) {
+        console.error("Error al hacer logout", error);
+        setIsLoggingOut(false);
+      }
+    }, 2000);
+  };
+
   return (
     <div
-      className={`col-span-4 max-[540px]:col-span-12 flex flex-col text-white h-screen bg-[#111B21] border-r-[1px] border-[#3e464b]`}
+      className={`col-span-4 relative max-[540px]:col-span-12 flex flex-col text-white h-screen bg-[#111B21] border-r-[1px] border-[#3e464b]`}
     >
+      {isLoggingOut && (
+        <div className="fixed flex items-center justify-center z-30 w-screen h-screen bg-black bg-opacity-80">
+          <div className="bg-[#111B21] text-white flex flex-col justify-between items-center p-8 rounded-lg">
+            <RingLoader size={100} color="#ffffff" />
+            Fechando a sessão
+          </div>
+        </div>
+      )}
+      <BiLogOut
+        onClick={handleLogout}
+        className="absolute z-[10] left-8 bottom-6 text-3xl text-white cursor-pointer"
+      />
+
       <div className="w-full pl-4 items-center justify-between flex py-2 ">
         <div className="w-[85%] px-2 flex items-center justify-between bg-[#202C33] h-10 rounded-lg">
           <AiOutlineSearch className="text-2xl text-[#AEBAC1]" />
@@ -99,6 +133,7 @@ export const Lista = ({
         onAddContact={handleAddContact}
         setContatos={setContatos}
         contatos={contatos}
+        user={user}
       />
     </div>
   );

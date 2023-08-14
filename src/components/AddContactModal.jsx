@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import RingLoader from "react-spinners/RingLoader";
 
-export const AddContactModal = ({ isOpen, onClose, setContatos, contatos }) => {
+export const AddContactModal = ({
+  isOpen,
+  onClose,
+  setContatos,
+  contatos,
+  user,
+}) => {
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [endereco, setEndereco] = useState("");
@@ -19,6 +25,7 @@ export const AddContactModal = ({ isOpen, onClose, setContatos, contatos }) => {
       email: correio,
       endereco: endereco,
       gender: gender,
+      uid: user.uid,
     };
 
     try {
@@ -52,7 +59,7 @@ export const AddContactModal = ({ isOpen, onClose, setContatos, contatos }) => {
     <div
       className={`${
         isOpen ? "fixed" : "hidden"
-      } inset-0 flex items-center justify-center z-20 bg-black bg-opacity-80`}
+      } inset-0 flex items-center justify-center z-30 bg-black bg-opacity-80`}
     >
       {isSubmitting ? (
         <div className="bg-[#111B21] flex items-center justify-center text-white max-[540px]:p-4 p-8 rounded-lg">

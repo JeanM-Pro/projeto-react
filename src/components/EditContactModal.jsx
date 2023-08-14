@@ -75,7 +75,9 @@ export const EditContactModal = ({
             <div className="mb-4 flex justify-between">
               <label htmlFor="telefone">Telefone:</label>
               <input
-                type="tel"
+                type="number"
+                pattern="\d*"
+                inputMode="numeric"
                 id="telefone"
                 value={telefone}
                 onChange={(e) => setTelefone(e.target.value)}
@@ -139,7 +141,7 @@ export const EditContactModal = ({
               <button
                 type="button"
                 className="border border-gray-500 max-[540px]:border-gray-300 max-[540px]:text-gray-300 hover:border-white px-4 py-2 rounded-md text-gray-500 hover:text-white"
-                onClick={() => onClose(false)}
+                onClick={onClose}
               >
                 Cancelar
               </button>

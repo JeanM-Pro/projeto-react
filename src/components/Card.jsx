@@ -100,7 +100,7 @@ export const Card = ({
   const [firstTwoDigits, restOfString] = splitString(selectedContact.tlf);
 
   return (
-    <div className="bg-[#202C33] max-[540px]:h-full max-[540px]:bg-opacity-90 max-[540px]:w-full max-[540px]:fixed flex items-center justify-center col-span-8 text-white">
+    <div className="bg-[#202C33] z-20 max-[540px]:h-full max-[540px]:bg-opacity-90 max-[540px]:w-full max-[540px]:fixed flex items-center justify-center col-span-8 text-white">
       <AiOutlineCloseCircle
         onClick={() => setSelectedContact(null)}
         className="min-[541px]:hidden absolute text-5xl top-4 right-4"
@@ -146,7 +146,7 @@ export const Card = ({
       {isEditModalOpen && (
         <EditContactModal
           isOpen={isEditModalOpen}
-          onClose={setIsEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
           selectedContact={selectedContact}
           handleUpdateContact={handleUpdateContact}
         />
