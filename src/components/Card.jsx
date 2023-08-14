@@ -41,13 +41,16 @@ export const Card = ({
   };
 
   const handleUpdateContact = (updatedContact) => {
-    fetch(`http://localhost:5000/contatos/${selectedContact.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedContact),
-    })
+    fetch(
+      `https://node-project-production-dadb.up.railway.app/api/contacts/${selectedContact.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedContact),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         const updatedContatos = contatos.map((contato) =>
@@ -65,9 +68,12 @@ export const Card = ({
   const handleDeleteContact = async () => {
     setspinnerDelete(true);
     try {
-      await fetch(`http://localhost:5000/contatos/${selectedContact.id}`, {
-        method: "DELETE",
-      }).then(() => {
+      await fetch(
+        `https://node-project-production-dadb.up.railway.app/api/contacts/${selectedContact.id}`,
+        {
+          method: "DELETE",
+        }
+      ).then(() => {
         const updatedContatos = contatos.filter(
           (contato) => contato.id !== selectedContact.id
         );

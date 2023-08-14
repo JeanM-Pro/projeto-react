@@ -18,7 +18,7 @@ export const Lista = ({
   const [showClearButton, setShowClearButton] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/contatos")
+    fetch("https://node-project-production-dadb.up.railway.app/api/contacts")
       .then((response) => response.json())
       .then((data) => setContatos(data))
       .catch((error) => console.error("Error al obtener los usuarios", error));

@@ -22,13 +22,16 @@ export const AddContactModal = ({ isOpen, onClose, setContatos, contatos }) => {
     };
 
     try {
-      await fetch("http://localhost:5000/contatos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newContact),
-      })
+      await fetch(
+        "https://node-project-production-dadb.up.railway.app/api/contacts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newContact),
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           setContatos([...contatos, data]);
@@ -79,7 +82,7 @@ export const AddContactModal = ({ isOpen, onClose, setContatos, contatos }) => {
                 type="number"
                 id="telefone"
                 pattern="\d*"
-                inputmode="numeric"
+                inputMode="numeric"
                 value={telefone}
                 onChange={(e) => setTelefone(e.target.value)}
                 required

@@ -16,7 +16,7 @@ export const EditContactModal = ({
   useEffect(() => {
     if (selectedContact) {
       setNome(selectedContact.nome);
-      setTelefone(selectedContact.tlf);
+      setTelefone(parseInt(selectedContact.tlf));
       setEndereco(selectedContact.endereco);
       setCorreio(selectedContact.email);
       setGender(selectedContact.gender);
@@ -25,16 +25,16 @@ export const EditContactModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const updatedContact = {
       ...selectedContact,
       nome: nome,
-      tlf: telefone,
+      tlf: parseInt(telefone),
       email: correio,
       endereco: endereco,
       gender: gender,
     };
-
     try {
       await handleUpdateContact(updatedContact);
       setIsSubmitting(false);
