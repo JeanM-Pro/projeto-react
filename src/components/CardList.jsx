@@ -12,7 +12,7 @@ export const CardList = ({ contato }) => {
     }
   };
 
-  const [firstTwoDigits, restOfString] = splitString(contato.tlf);
+  const [firstTwoDigits, restOfString] = splitString(contato.tlf.toString());
   return (
     <div className="w-full h-[66px] flex cursor-pointer items-center pl-4 pr-2 hover:bg-[#202C33]">
       <img

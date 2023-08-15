@@ -76,7 +76,7 @@ export const Lista = ({
       )}
       <BiLogOut
         onClick={handleLogout}
-        className="absolute z-[10] left-8 bottom-6 text-3xl text-white cursor-pointer"
+        className="absolute z-[10] left-8 max-[540px]:bottom-14 bottom-6 text-3xl text-white cursor-pointer"
       />
 
       <div className="w-full pl-4 items-center justify-between flex py-2 ">

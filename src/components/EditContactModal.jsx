@@ -6,6 +6,7 @@ export const EditContactModal = ({
   onClose,
   selectedContact,
   handleUpdateContact,
+  user,
 }) => {
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -26,7 +27,6 @@ export const EditContactModal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     const updatedContact = {
       ...selectedContact,
       nome: nome,
@@ -34,14 +34,19 @@ export const EditContactModal = ({
       email: correio,
       endereco: endereco,
       gender: gender,
+      uid: user.uid,
     };
-    try {
-      await handleUpdateContact(updatedContact);
-      setIsSubmitting(false);
-    } catch (error) {
-      setIsSubmitting(false);
-      console.error("Error al actualizar el contacto", error);
-    }
+
+    setTimeout(async () => {
+      try {
+        await handleUpdateContact(updatedContact);
+        onClose();
+        setIsSubmitting(false);
+      } catch (error) {
+        setIsSubmitting(false);
+        console.error("Error al actualizar el contacto", error);
+      }
+    }, 1000);
   };
 
   return (

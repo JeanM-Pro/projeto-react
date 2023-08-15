@@ -12,6 +12,7 @@ export const Card = ({
   contatos,
   setContatos,
   setSelectedContact,
+  user,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -97,7 +98,9 @@ export const Card = ({
     }
   };
 
-  const [firstTwoDigits, restOfString] = splitString(selectedContact.tlf);
+  const [firstTwoDigits, restOfString] = splitString(
+    selectedContact.tlf.toString()
+  );
 
   return (
     <div className="bg-[#202C33] z-20 max-[540px]:h-full max-[540px]:bg-opacity-90 max-[540px]:w-full max-[540px]:fixed flex items-center justify-center col-span-8 text-white">
@@ -149,6 +152,7 @@ export const Card = ({
           onClose={() => setIsEditModalOpen(false)}
           selectedContact={selectedContact}
           handleUpdateContact={handleUpdateContact}
+          user={user}
         />
       )}
     </div>

@@ -51,6 +51,7 @@ export const App = () => {
               setContatos={setContatos}
               setSelectedContact={setSelectedContact}
               widthScreen={widthScreen}
+              user={user}
             />
           </div>
         </div>
